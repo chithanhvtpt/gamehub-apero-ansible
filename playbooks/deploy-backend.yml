@@ -22,8 +22,3 @@
         dest: "{{ current_dir_staging_backend }}"
         state: link
         force: yes
-
-    - name: Run npm install
-      community.general.npm:
-        path: "{{ current_dir_staging_backend }}"
-        version: "8.3.1"
