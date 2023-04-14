@@ -1,0 +1,8 @@
+app_root_staging_backend: '/var/www2/gamehub/backend'
+app_root_staging_frontend: '/var/www2/gamehub/frontend'
+releases_dir_staging_backend: '{{ app_root_staging_backend }}/releases'
+releases_dir_staging_frontend: '{{ app_root_staging_frontend }}/releases'
+current_dir_staging_backend: '{{ app_root_staging_backend }}/current'
+current_dir_staging_frontend: '{{ app_root_staging_frontend }}/current'
+date: '{{ ansible_date_time.date }}'
+time: '{{ ansible_date_time.hour }}-{{ ansible_date_time.minute }}-{{ ansible_date_time.second }}'
