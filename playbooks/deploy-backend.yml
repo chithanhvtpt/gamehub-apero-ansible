@@ -1,0 +1,29 @@
+- name: Deploy backend
+  hosts: all
+  vars_files:
+    - ../variables/deploy-vars.yml
+
+  tasks:
+    - name: Create required directories
+      ansible.builtin.file:
+        path: "{{ releases_dir_staging_backend }}/{{ date }}-{{ time }}"
+        state: directory
+        mode: '0775'
+
+    - name: Clone application code
+      ansible.builtin.git:
+        repo: git@github.com:Apero-Partner/Gamehub-BE.git
+        dest: "{{ releases_dir_staging_backend }}/{{ date }}-{{ time }}"
+        version: "staging"
+
+    - name: Create symbolic link to current release
+      ansible.builtin.file:
+        src: "{{ releases_dir_staging_backend }}/{{ date }}-{{ time }}"
+        dest: "{{ current_dir_staging_backend }}"
+        state: link
+        force: yes
+
+    - name: Run npm install
+      community.general.npm:
+        path: "{{ current_dir_staging_backend }}"
+        version: "8.3.1"
