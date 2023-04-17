@@ -22,3 +22,8 @@
         dest: "{{ current_dir_staging_backend }}"
         state: link
         force: yes
+
+    - name: Run npm install
+      npm:
+        path: "{{ current_dir_staging_backend }}"
+        version: "8.1.2"
