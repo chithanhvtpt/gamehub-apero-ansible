@@ -1,2 +1,1 @@
 [staging]
-ansible_server ansible_host=202.182.106.66 ansible_user=root ansible_ssh_private_key_file=./staging-key.pem
